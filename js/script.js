@@ -5,34 +5,39 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 
 //An array of object literals. Each object literal contains quotes and associated info
 var quotes = [
-    {   quote: "First quote",
-        source: "First source",
-        citation: "First citation",
-        year: "First year"
+    {   quote: "Quality is not an act, it is a habit",
+        source: "Aristotle",
+        //citation: "First citation",
+        year: "320BC"
     },
 
-    {   quote: "Second quote",
-        source: "Second source",
-        citation: "Second citation",
-        year: "Second year"
+    {   quote: "“Be congruent, be authentic, be your true self.”",
+        source: "Mahatma Gandhi",
+        citation: "mindbodygreen.com"
+
     },
 
-    {   quote: "Third quote",
-        source: "Third source",
-        //citation: "Third citation",
-        //year: "Third year"
+    {   quote: "If you can't feed a hundred people, then feed just one.",
+        source: "Mother Theresa",
+        citation: "catholic.org"
     },
 
-    {   quote: "Fourth quote",
-        source: "Fourth source",
-        //citation: "Fourth citation",
-        //year: "Fourth year"
+    {   quote: "I sometimes have a tendency to walk on the dark side",
+        source: "J.K Rowling",
+        citation: "brainyquote.com",
+        year: "2007"
     },
 
-    {   quote: "Fifth quote",
-        source: "Fifth source",
-        //citation: "Fifth citation",
-        //year: "Fifth year"
+    {   quote: "Blessed are those who are persecuted because of righteousness, for theirs is the kingdom of heaven",
+        source: "Jesus",
+        citation: "Matthew 5:10",
+        year: "AD 27"
+    },
+
+    {   quote: "My favorite things in life don’t cost any money. It’s really clear that the most precious resource we all have is time.",
+        source: "Steve Jobs",
+        citation: "themuse.com"
+
     }
 ];
 
@@ -41,6 +46,8 @@ var quotes = [
 var numOfQuotes = quotes.length;
 
 var previousGeneratedRandomNumber = null;
+
+
 
 //A function to generate a random number
 function getRandomNumber(upper){
@@ -75,6 +82,9 @@ function getRandomQuote(){
         messageHTML += '</p>';
         console.log(messageHTML);
 
+        injectHTML(messageHTML);
+        changeBackgroundColor();
+
         previousGeneratedRandomNumber = randNum;
 
     }else{
@@ -83,9 +93,31 @@ function getRandomQuote(){
 
 }
 
+var target = document.getElementById('quote-box');
+
+//function to inject HTML into page
+function injectHTML(message){
+    target.innerHTML = message;
+}
+
 //Declaring the printQuote function
 function printQuote(){
     //calls the getRandomQuote() function, then stores returned object into a variable
     getRandomQuote();
     //construct the string containing the different quote properties using HTML template
 }
+
+//EXTRA CREDIT:
+//1)Add further object properties such as category tags
+
+//2)Change background color to a random color for each button click
+function changeBackgroundColor(){
+    //rgb values from 0 to 255
+    var r = getRandomNumber(255);
+    var g = getRandomNumber(255);
+    var b = getRandomNumber(255);
+    var rgb = "rgb(" + r + "," + g + "," + b + ")";
+    document.body.style.backgroundColor = rgb;
+}
+//3)Refresh the quote automatically after 20 seconds using setInterval or setTimeout
+setInterval(printQuote, 20000);
