@@ -8,12 +8,15 @@ var quotes = [
     {   quote: "Quality is not an act, it is a habit",
         source: "Aristotle",
         //citation: "First citation",
-        year: "320BC"
+        year: "320BC",
+        tag: "Philosophical"
+
     },
 
     {   quote: "“Be congruent, be authentic, be your true self.”",
         source: "Mahatma Gandhi",
-        citation: "mindbodygreen.com"
+        citation: "mindbodygreen.com",
+        tag: "Inspirational"
 
     },
 
@@ -25,13 +28,15 @@ var quotes = [
     {   quote: "I sometimes have a tendency to walk on the dark side",
         source: "J.K Rowling",
         citation: "brainyquote.com",
-        year: "2007"
+        year: "2007",
+        tag: "Humor"
     },
 
     {   quote: "Blessed are those who are persecuted because of righteousness, for theirs is the kingdom of heaven",
         source: "Jesus",
         citation: "Matthew 5:10",
-        year: "AD 27"
+        year: "AD 27",
+        tag: "Religion"
     },
 
     {   quote: "My favorite things in life don’t cost any money. It’s really clear that the most precious resource we all have is time.",
@@ -78,6 +83,11 @@ function getRandomQuote(){
         if(typeof quoteObject.year !== "undefined"){
             messageHTML+= '<span class="year">' + quoteObject.year + '</span>';
         }
+        //add tag
+        if(typeof  quoteObject.tag !== "undefined"){
+            messageHTML+= '<p class="tag">Category: '+ quoteObject.tag + '</p>';
+        }
+
 
         messageHTML += '</p>';
         console.log(messageHTML);
