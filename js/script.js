@@ -19,20 +19,20 @@ var quotes = [
 
     {   quote: "Third quote",
         source: "Third source",
-        citation: "Third citation",
-        year: "Third year"
+        //citation: "Third citation",
+        //year: "Third year"
     },
 
     {   quote: "Fourth quote",
         source: "Fourth source",
-        citation: "Fourth citation",
-        year: "Fourth year"
+        //citation: "Fourth citation",
+        //year: "Fourth year"
     },
 
     {   quote: "Fifth quote",
         source: "Fifth source",
-        citation: "Fifth citation",
-        year: "Fifth year"
+        //citation: "Fifth citation",
+        //year: "Fifth year"
     }
 ];
 
@@ -57,14 +57,23 @@ function getRandomQuote(){
     //if the newly generated random number was the same as last time, get a different number
     if (randNum !== previousGeneratedRandomNumber){
         //using the randNum obtained, access this index position in the array to retrieve the quote object
-        var quote = quotes[randNum];
+        var quoteObject = quotes[randNum];
 
-        //log the quote to test if it works
-        console.log(quote);
 
         //output the quote to the browser HTML
         //some properties won't exist, how do we check for this?
-        var messageHTML = "";
+        var messageHTML = '<p class=\"quote\">' + quoteObject.quote + '</p>';
+        messageHTML += '<p class="source">' + quoteObject.source;
+
+        if(typeof quoteObject.citation !== "undefined"){
+            messageHTML+= '<span class="citation">' + quoteObject.citation + '</span>';
+        }
+        if(typeof quoteObject.year !== "undefined"){
+            messageHTML+= '<span class="year">' + quoteObject.year + '</span>';
+        }
+
+        messageHTML += '</p>';
+        console.log(messageHTML);
 
         previousGeneratedRandomNumber = randNum;
 
